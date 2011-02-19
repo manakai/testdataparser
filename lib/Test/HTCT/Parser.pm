@@ -3,6 +3,7 @@ use strict;
 use warnings;
 no warnings 'utf8';
 use Exporter::Lite;
+our $VERSION = '1.0';
 
 our @EXPORT = qw(for_each_test);
 

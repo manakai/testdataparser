@@ -47,6 +47,15 @@ Wakaba <w@suika.fam.cx>.
 
 The format was originally defined by WHATWG/html5lib contributors.
 
+=head1 HISTORY
+
+The parser was originally developed as part of L<Whatpm::HTML> HTML
+parser module, which is part of the manakai package
+<http://suika.fam.cx/www/manakai-core/doc/web/>.
+
+The first version, C<1.0>, as a standalone module with new name
+L<Test::HTCT::Parser> is released on February 19, 2011.
+
 =head1 LICENSE
 
 Copyright 2007-2011 Wakaba <w@suika.fam.cx>.
