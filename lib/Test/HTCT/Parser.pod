@@ -1,0 +1,57 @@
+=head1 NAME
+
+Test::HTCT::Parser - A parser for test data in HTML Tree Construction Tests format
+
+=head1 SYNOPSIS
+
+  use Test::HTCT::Parser;
+  
+  for_each_test $file_name, {
+    data => {},
+    errors => {is_list => 1},
+    document => {is_prefixed => 1},
+    'document-fragment' => {is_prefixed => 1},
+  }, sub {
+    my $test = shift;
+
+    my ($serialized, $errors) = parse_data ($test->{data}->[0]);
+    is $serialized, $test->{document}->[0];
+    is_deeply $errors, $test->{errors}->[0];
+  };
+
+=head1 DESCRIPTION
+
+The C<Test::HTCT::Parser> module exports a function to parse test data
+file encoded in the format for HTML Parsers' Tree Construction Tests.
+It can also be used to parse test data for other purposes than HTML
+parsing.
+
+For more information on the usage of the module, see
+C<t/test-htct-parser.t> test script.
+
+=head1 SEE ALSO
+
+WHATWG Wiki, Parser tests, Tree Constructoion Tests
+<http://wiki.whatwg.org/wiki/Parser_tests#Tree_Construction_Tests>.
+
+HTML Parser Tree Constructions Tests (from html5lib repository)
+<http://html5lib.googlecode.com/svn/trunk/testdata/tree-construction/>.
+
+manakai Tests
+<http://suika.fam.cx/gate/git/wi/manakai.git/tree/HEAD:/t>.  (See
+C<*.dat> files).
+
+=head1 AUTHOR
+
+Wakaba <w@suika.fam.cx>.
+
+The format was originally defined by WHATWG/html5lib contributors.
+
+=head1 LICENSE
+
+Copyright 2007-2011 Wakaba <w@suika.fam.cx>.
+
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
