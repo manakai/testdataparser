@@ -47,8 +47,7 @@
     document =&gt; {is_prefixed =&gt; 1},
     'document-fragment' =&gt; {is_prefixed =&gt; 1},
   }, sub {
-    my $test = shift;</pre>
-<pre>
+    my $test = shift;
     my ($serialized, $errors) = parse_data ($test-&gt;{data}-&gt;[0]);
     is $serialized, $test-&gt;{document}-&gt;[0];
     is_deeply $errors, $test-&gt;{errors}-&gt;[0];
