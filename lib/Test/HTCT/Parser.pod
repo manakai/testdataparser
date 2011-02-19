@@ -43,6 +43,14 @@ C<*.dat> files).
 sami-test.js, which is a JavaScript implementation of the format
 <http://suika.fam.cx/gate/git/wi/sami.git/blob/HEAD:/sami/script/sami-test.js>.
 
+=head1 DISTRIBUTION
+
+The latest version of the module is available from the git repository
+<http://suika.fam.cx/gate/git/wi/web/testdataparser.git/tree>.
+
+The repository is also found in GitHub:
+<https://github.com/wakaba/testdataparser>.
+
 =head1 AUTHOR
 
 Wakaba <w@suika.fam.cx>.
