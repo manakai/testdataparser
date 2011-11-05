@@ -66,6 +66,8 @@ parser module, which is part of the manakai package
 The first version, C<1.0>, as a standalone module with new name
 L<Test::HTCT::Parser> is released on February 19, 2011.
 
+The second version, C<2.0>, added support for C<multiple> fields.
+
 =head1 LICENSE
 
 Copyright 2007-2011 Wakaba <w@suika.fam.cx>.

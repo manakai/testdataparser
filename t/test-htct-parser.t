@@ -14,6 +14,9 @@ sub _for_each_test : Test(1) {
   for_each_test $test_data_f->stringify, {
     data => {is_prefixed => 1},
     errors => {is_list => 1},
+    multiple1 => {multiple => 1},
+    multiple2 => {multiple => 1, is_list => 1},
+    multiple3 => {multiple => 1, is_prefixed => 1},
   }, sub ($) {
     my $test = shift;
     push @test, $test;
@@ -26,6 +29,9 @@ sub _for_each_test : Test(1) {
      field2 => ['', []],
      field3 => ['def', ['abc']],
      field4 => ["|abc\n| def", []]},
+    {data => ['hoge', []], multiple1 => [['fuga', []], ['foo', []]],
+     multiple2 => [[['a', 'b'], []], [['c', 'd'], []]],
+     multiple3 => [['hoge', []]]},
   ];
 }
 

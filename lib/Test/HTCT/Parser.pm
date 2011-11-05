@@ -3,7 +3,7 @@ use strict;
 use warnings;
 no warnings 'utf8';
 use Exporter::Lite;
-our $VERSION = '1.0';
+our $VERSION = '2.0';
 
 our @EXPORT = qw(for_each_test);
 
@@ -53,10 +53,15 @@ sub for_each_test ($$$) {
           }
         }
 
-        if (defined $test{$field_name}) {
-          warn qq[Duplicate #$field_name field (value "$v")];
+        if ($field_props->{$field_name}->{multiple}) {
+          $test{$field_name} ||= [];
+          push @{$test{$field_name}}, [\@v, \@field_opt];
         } else {
-          $test{$field_name} = [\@v, \@field_opt];
+          if (defined $test{$field_name}) {
+            warn qq[Duplicate #$field_name field (value "$v")];
+          } else {
+            $test{$field_name} = [\@v, \@field_opt];
+          }
         }
       } else {
         my $field_escaped = (@field_opt and $field_opt[-1] eq 'escaped');
@@ -66,10 +71,15 @@ sub for_each_test ($$$) {
           $v =~ s/\\U([0-9A-Fa-f]{8})/chr hex $1/ge;
         }
 
-        if (defined $test{$field_name}) {
-          warn qq[Duplicate #$field_name field (value "$v")];
+        if ($field_props->{$field_name}->{multiple}) {
+          $test{$field_name} ||= [];
+          push @{$test{$field_name}}, [$v, \@field_opt];
         } else {
-          $test{$field_name} = [$v, \@field_opt];
+          if (defined $test{$field_name}) {
+            warn qq[Duplicate #$field_name field (value "$v")];
+          } else {
+            $test{$field_name} = [$v, \@field_opt];
+          }
         }
       }
     }
