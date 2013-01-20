@@ -1,15 +1,16 @@
-package test::Test::HTCT::Parser;
 use strict;
 use warnings;
 use Path::Class;
 use lib file (__FILE__)->dir->parent->subdir ('lib')->stringify;
-use base qw(Test::Class);
+use lib glob file (__FILE__)->dir->parent->subdir ('t_deps', 'modules', '*', 'lib')->stringify;
+use Test::X1;
 use Test::HTCT::Parser;
 use Test::Differences;
 
 my $test_data_f = file (__FILE__)->dir->file ('test-htct-parser-1.dat');
 
-sub _for_each_test : Test(1) {
+test {
+  my $c = shift;
   my @test;
   for_each_test $test_data_f->stringify, {
     data => {is_prefixed => 1},
@@ -33,15 +34,14 @@ sub _for_each_test : Test(1) {
      multiple2 => [[['a', 'b'], []], [['c', 'd'], []]],
      multiple3 => [['hoge', []]]},
   ];
-}
+  done $c;
+} n => 1;
 
-__PACKAGE__->runtests;
-
-1;
+run_tests;
 
 =head1 LICENSE
 
-Copyright 2011 Wakaba <w@suika.fam.cx>.
+Copyright 2011-2013 Wakaba <wakaba@suikawiki.org>.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

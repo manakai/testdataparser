@@ -1,3 +1,2 @@
-Test::Class
 Test::Differences
 Path::Class
