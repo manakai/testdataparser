@@ -2,10 +2,20 @@ package Test::HTCT::Parser;
 use strict;
 use warnings;
 no warnings 'utf8';
-use Exporter::Lite;
-our $VERSION = '2.0';
+our $VERSION = '3.0';
 
 our @EXPORT = qw(for_each_test);
+
+sub import ($;@) {
+  my $from_class = shift;
+  my ($to_class, $file, $line) = caller;
+  no strict 'refs';
+  for (@_ ? @_ : @{$from_class . '::EXPORT'}) {
+    my $code = $from_class->can ($_)
+        or die qq{"$_" is not exported by the $from_class module at $file line $line};
+    *{$to_class . '::' . $_} = $code;
+  }
+} # import
 
 sub for_each_test ($$$) {
   my $file_name = shift;
@@ -92,7 +102,7 @@ sub for_each_test ($$$) {
 
 =head1 LICENSE
 
-Copyright 2007-2011 Wakaba <w@suika.fam.cx>.
+Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

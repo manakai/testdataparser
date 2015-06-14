@@ -36,24 +36,21 @@ WHATWG Wiki, Parser tests, Tree Constructoion Tests
 HTML Parser Tree Constructions Tests (from html5lib repository)
 <http://html5lib.googlecode.com/svn/trunk/testdata/tree-construction/>.
 
-manakai Tests
-<http://suika.fam.cx/gate/git/wi/manakai.git/tree/HEAD:/t>.  (See
-C<*.dat> files).
-
 sami-test.js, which is a JavaScript implementation of the format
-<http://suika.fam.cx/gate/git/wi/sami.git/blob/HEAD:/sami/script/sami-test.js>.
+<https://github.com/wakaba/samijs/blob/master/sami/script/sami-test.js>.
 
 =head1 DISTRIBUTION
 
-The latest version of the module is available from the git repository
-<http://suika.fam.cx/gate/git/wi/web/testdataparser.git/tree>.
+The latest version of the module is available from the GitHub
+repository: <https://github.com/wakaba/testdataparser>.
 
-The repository is also found in GitHub:
-<https://github.com/wakaba/testdataparser>.
+=head1 DEPENDENCY
+
+The module requires Perl 5.8 or later.
 
 =head1 AUTHOR
 
-Wakaba <w@suika.fam.cx>.
+Wakaba <wakaba@suikawiki.org>.
 
 The format was originally defined by WHATWG/html5lib contributors.
 
@@ -70,7 +67,7 @@ The second version, C<2.0>, added support for C<multiple> fields.
 
 =head1 LICENSE
 
-Copyright 2007-2011 Wakaba <w@suika.fam.cx>.
+Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
