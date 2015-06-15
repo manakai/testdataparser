@@ -2,6 +2,8 @@ Scalar::Util~1.42
 Capture::Tiny~0.30
 AnyEvent~7.09
 Term::ANSIColor~4.03
+parent~0.234
+Data::Dumper~2.154
 Carp~1.36
 Text::Diff~1.41
 Test::More~1.001014
