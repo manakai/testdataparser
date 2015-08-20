@@ -5,7 +5,7 @@ Term::ANSIColor~4.03
 parent~0.234
 Data::Dumper~2.154
 Carp~1.36
-Text::Diff~1.41
+Text::Diff~1.42
 Test::More~1.001014
 Test::Differences~0.63
 Filter::Util::Call~1.55
