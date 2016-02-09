@@ -1,4 +1,4 @@
-Scalar::Util~1.42
+Scalar::Util~1.43
 Capture::Tiny~0.30
 AnyEvent~7.12
 Term::ANSIColor~4.04
