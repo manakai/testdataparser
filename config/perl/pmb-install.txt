@@ -1,5 +1,5 @@
 Scalar::Util~1.43
-Capture::Tiny~0.30
+Capture::Tiny~0.34
 AnyEvent~7.12
 Term::ANSIColor~4.04
 Data::Dumper~2.154
@@ -8,5 +8,5 @@ Text::Diff~1.43
 Test::More~1.001014
 Test::Differences~0.64
 Filter::Util::Call~1.55
-Path::Class~0.35
+Path::Class~0.36
 Algorithm::Diff~1.1903
