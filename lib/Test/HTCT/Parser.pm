@@ -2,7 +2,7 @@ package Test::HTCT::Parser;
 use strict;
 use warnings;
 no warnings 'utf8';
-our $VERSION = '3.0';
+our $VERSION = '4.0';
 
 our @EXPORT = qw(for_each_test);
 
@@ -25,19 +25,35 @@ sub for_each_test ($$$) {
   print STDERR "# $file_name\n";
 
   my @tests;
+  my @line;
   {
-    open my $file, '<:encoding(utf8)', $file_name or die "$0: $file_name: $!";
+    open my $file, '<:encoding(utf-8)', $file_name or die "$0: $file_name: $!";
     local $/ = undef;
     my $content = <$file>;
-    $content =~ s/\x0D\x0A/\x0A/g;
-    $content =~ tr/\x0D/\x0A/;
-    $content =~ s/^\x0A*#//;
-    $content =~ s/\x0A+\z//;
-    @tests = split /\x0A\x0A#/, $content;
+    my $line_number = 1;
+    my $separator = 1;
+    for my $line (split /\x0A/, $content, -1) {
+      $line =~ s/\x0D\z//;
+      if ($line eq '') {
+        $separator = 1;
+      } else {
+        if ($separator) {
+          push @line, $line_number;
+          push @tests, $line;
+          $separator = 0;
+        } else {
+          $tests[-1] .= "\x0A" . $line;
+        }
+      }
+      $line_number++;
+    } # $line
   }
 
   for (@tests) {
+    s/^#//;
     my %test;
+    my $opts = {};
+    $opts->{line_number} = shift @line;
     for my $v (split /\x0A#/, $_) {
       my $field_name = '';
       my @field_opt;
@@ -94,7 +110,7 @@ sub for_each_test ($$$) {
       }
     }
 
-    $test_code->(\%test);
+    $test_code->(\%test, $opts);
   }
 } # execute_test
 
@@ -102,7 +118,7 @@ sub for_each_test ($$$) {
 
 =head1 LICENSE
 
-Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2017 Wakaba <wakaba@suikawiki.org>.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

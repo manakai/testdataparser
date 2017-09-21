@@ -28,10 +28,21 @@ parsing.
 For more information on the usage of the module, see
 C<t/test-htct-parser.t> test script.
 
+=head1 TEST CALLBACK
+
+The callback code is invoked for each test, in order in the input test
+data file.  It is invoked with two arguments.
+
+The first argument C<$_[0]> represents the test data.
+
+The second argument C<$_[1]> has additional data.  It is a hash
+reference with a key/value pair: C<line_number> is the line number of
+the first line of the test data in the input test data file.
+
 =head1 SEE ALSO
 
 WHATWG Wiki, Parser tests, Tree Constructoion Tests
-<http://wiki.whatwg.org/wiki/Parser_tests#Tree_Construction_Tests>.
+<https://wiki.whatwg.org/wiki/Parser_tests#Tree_Construction_Tests>.
 
 HTML Parser Tree Constructions Tests (from html5lib repository)
 <http://html5lib.googlecode.com/svn/trunk/testdata/tree-construction/>.
@@ -58,7 +69,7 @@ The format was originally defined by WHATWG/html5lib contributors.
 
 The parser was originally developed as part of L<Whatpm::HTML> HTML
 parser module, which is part of the manakai package
-<http://suika.fam.cx/www/manakai-core/doc/web/>.
+<https://suika.suikawiki.org/www/manakai-core/doc/web/>.
 
 The first version, C<1.0>, as a standalone module with new name
 L<Test::HTCT::Parser> is released on February 19, 2011.
@@ -67,7 +78,7 @@ The second version, C<2.0>, added support for C<multiple> fields.
 
 =head1 LICENSE
 
-Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2017 Wakaba <wakaba@suikawiki.org>.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
