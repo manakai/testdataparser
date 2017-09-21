@@ -35,11 +35,15 @@ sub for_each_test ($$$) {
     for my $line (split /\x0A/, $content, -1) {
       $line =~ s/\x0D\z//;
       if ($line eq '') {
-        $separator = 1;
+        $separator++;
       } else {
         if ($separator) {
-          push @line, $line_number;
-          push @tests, $line;
+          if (not $line =~ /^#/ and @tests) {
+            $tests[-1] .= "\x0A" x $separator . "\x0A" . $line;
+          } else {
+            push @line, $line_number;
+            push @tests, $line;
+          }
           $separator = 0;
         } else {
           $tests[-1] .= "\x0A" . $line;

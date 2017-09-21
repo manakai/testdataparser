@@ -36,9 +36,10 @@ test {
     {data => ['hoge', []], multiple1 => [['fuga', []], ['foo', []]],
      multiple2 => [[['a', 'b'], []], [['c', 'd'], []]],
      multiple3 => [['hoge', []]]},
+    {data => ["ab\x0A\x0Acde", []], foo => ["", []]},
   ];
   eq_or_diff \@line, [
-    1, 7, 23,
+    1, 7, 23, 38,
   ];
   done $c;
 } n => 2;
