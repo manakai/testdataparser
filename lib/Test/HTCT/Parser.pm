@@ -6,6 +6,15 @@ our $VERSION = '4.0';
 
 our @EXPORT = qw(for_each_test);
 
+BEGIN {
+  if (eval q{ use Web::Encoding }) {
+    *DECODE = \&Web::Encoding::decode_web_utf8;
+  } else {
+    require Encode;
+    *DECODE = \&Encode::decode_utf8;
+  }
+}
+
 sub import ($;@) {
   my $from_class = shift;
   my ($to_class, $file, $line) = caller;
@@ -27,9 +36,9 @@ sub for_each_test ($$$) {
   my @tests;
   my @line;
   {
-    open my $file, '<:encoding(utf-8)', $file_name or die "$0: $file_name: $!";
+    open my $file, '<', $file_name or die "$0: $file_name: $!";
     local $/ = undef;
-    my $content = <$file>;
+    my $content = DECODE <$file>;
     my $line_number = 1;
     my $separator = 1;
     for my $line (split /\x0A/, $content, -1) {
