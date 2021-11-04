@@ -76,9 +76,13 @@ L<Test::HTCT::Parser> is released on February 19, 2011.
 
 The second version, C<2.0>, added support for C<multiple> fields.
 
+This repository was located at
+<https://github.com/wakaba/testdataparser> until it has been
+transferred to the manakai project on Nobember 4, 2021.
+
 =head1 LICENSE
 
-Copyright 2007-2017 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2021 Wakaba <wakaba@suikawiki.org>.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
